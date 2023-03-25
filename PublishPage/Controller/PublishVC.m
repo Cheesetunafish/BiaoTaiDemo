@@ -37,9 +37,7 @@
     [self.view addSubview:self.headView];
     [self.view addSubview:self.footView];
     [self.view addSubview:self.table];
-    
-//    [self.table setTableFooterView:self.footView];
-
+    [self setTap];
     
     self.navigationItem.title = @"表态区";
     
@@ -50,6 +48,17 @@
     self.muteDataArray = [self.dataArray mutableCopy];
 }
 
+// !!!: tap方法
+- (void)setTap {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(taptap)];
+    tap.numberOfTapsRequired = 1;
+    [self.headView.headerText addGestureRecognizer:tap];
+}
+
+- (void)taptap {
+    NSString *string = @"ddasfasdasdfddddddddddd";
+    self.headView.headerText.text = string;
+}
 
 #pragma mark - DataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,7 +134,11 @@
         NSLog(@"最大只能添加10个");
     }
 }
-
+//// MARK: headDelegate
+//- (void)changeTitleLabel {
+//    NSString *string = @"asdaflkawjekla";
+//    self.headView.headerText.text = string;
+//}
 #pragma mark - LazyLoad
 - (UITableView *)table {
     if (!_table) {

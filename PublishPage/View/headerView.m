@@ -6,8 +6,9 @@
 //
 
 #import "headerView.h"
+
 @interface headerView()
-@property (nonatomic, strong) UILabel *headerText;
+
 @end
 
 @implementation headerView
@@ -16,6 +17,7 @@
         self = [super init];
         self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.headerText];
+//        [self addTap];
     }
     return self;
 }
@@ -29,9 +31,23 @@
         _headerText.backgroundColor = [UIColor systemGray3Color];
         _headerText.layer.cornerRadius = 10;
         _headerText.layer.masksToBounds = YES;
+        _headerText.userInteractionEnabled = YES;
+        
     }
     return _headerText;
 }
+
+//- (void)addTap {
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicked)];
+//    tap.numberOfTapsRequired = 1;
+//    [self.headerText addGestureRecognizer:tap];
+//    NSLog(@"给你点了+");
+//}
+//
+//- (void)clicked {
+//    NSLog(@"给你点了1");
+//    [self.delegate changeTitleLabel];
+//}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
